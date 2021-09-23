@@ -33,14 +33,14 @@ def my_action(start_num):
         if len(my_split_list) > 3 or len(my_split_list) < 1:
             continue
 
-        flag = False
+        flag = True
 
         for i in range(len(my_split_list)):
-            if start_num + i + 1 != int(my_split_list[i]):
-                flag = True
+            if (start_num + i + 1) != int(my_split_list[i]):
+                flag = False
                 break
 
-        if flag:
+        if not flag:
             continue
         else:
             break
@@ -51,27 +51,26 @@ def my_action(start_num):
 def br31():
     print("베스킨라빈스 31 게임 시작!")
 
-    start = 0
+    number = 0
 
     while True:
+        number = com_action(number)
 
-        last = com_action(start)
-
-        if last == -1:
+        if number == -1:
             print("게임종료")
             print("나 승리!")
             break
         else:
-            print("컴퓨터 :", last)
+            print("컴퓨터 :", number)
 
-        start = my_action(last)
+        number = my_action(number)
 
-        if start == -1:
+        if number == -1:
             print("게임종료")
             print("컴퓨터 승리!")
             break
         else:
-            print("나 :", start)
+            print("나 :", number)
 
 
 br31()
